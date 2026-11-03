@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "216118576768",
+    "project_id": "gerenciador-de-livros-b139c",
+    "storage_bucket": "gerenciador-de-livros-b139c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216118576768:android:aa85a442416815a0bec865",
+        "android_client_info": {
+          "package_name": "com.fabricio.gerenciadorlivros"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxqn31G0MnqCvPvnV_nuKatN9rFdbDG20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

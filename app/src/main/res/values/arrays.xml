@@ -1,0 +1,26 @@
+<resources>
+    <string-array name="generos">
+        <item>Selecione o gênero</item>
+        <item>Romance</item>
+        <item>Fantasia</item>
+        <item>Terror</item>
+        <item>Ficção Científica</item>
+        <item>Biografia</item>
+    </string-array>
+
+    <string-array name="generos_filtro">
+        <item>Todos</item>
+        <item>Romance</item>
+        <item>Fantasia</item>
+        <item>Terror</item>
+        <item>Ficção Científica</item>
+        <item>Biografia</item>
+    </string-array>
+
+    <string-array name="status_leitura">
+        <item>Selecione o status</item>
+        <item>Quero ler</item>
+        <item>Lendo</item>
+        <item>Concluído</item>
+    </string-array>
+</resources>
