@@ -1,65 +1,47 @@
-# Gerenciador de Livros
+# Gerenciador de Livros - AC2 Mobile
 
-App Android (Java) para cadastrar, listar, editar e excluir livros, com persistência no
-Firebase Firestore.
+Atividade da disciplina de Mobile (AC2). O app serve para cadastrar os livros que eu li,
+estou lendo ou quero ler, com tudo salvo no Firebase (Firestore), não em memória.
 
-## Passo a passo para rodar no Android Studio
+## O que o app faz
 
-1. **Abra o projeto**
-   - Abra o Android Studio (o que já está instalado em `D:\Android`).
-   - `File > Open...` e selecione a pasta `D:\facc`.
-   - Deixe o Gradle sincronizar (ele vai baixar o wrapper e as dependências na primeira vez).
+- Cadastra livro com título, autor, gênero, ano de publicação, status de leitura e se é
+  favorito.
+- Lista todos os livros cadastrados.
+- Clicando num livro da lista, carrega ele pra editar.
+- Segurando o dedo (clique longo) no livro, pergunta se quer excluir.
+- Tem filtro por gênero, filtro de favoritos e busca por título.
+- Valida os campos obrigatórios (não deixa salvar título/autor vazio, sem gênero ou status
+  selecionado, etc).
+- Mostra quantos livros estão cadastrados no total.
 
-2. **Crie um projeto no Firebase**
-   - Acesse https://console.firebase.google.com
-   - Clique em "Adicionar projeto" e siga os passos (pode desativar o Google Analytics).
+## Como rodar
 
-3. **Registre o app Android no Firebase**
-   - Dentro do projeto Firebase, clique no ícone do Android para adicionar um app.
-   - Nome do pacote (applicationId): `com.fabricio.gerenciadorlivros`
-   - Baixe o arquivo `google-services.json` gerado.
-   - Copie esse arquivo para `D:\facc\app\google-services.json` (dentro da pasta `app`,
-     no mesmo nível de `build.gradle.kts`).
+1. Abre o Android Studio e usa `File > Open`, escolhe a pasta do projeto.
+2. Deixa o Gradle sincronizar sozinho (baixa as dependências na primeira vez).
+3. Precisa de um projeto no Firebase pra funcionar:
+   - cria um projeto em https://console.firebase.google.com
+   - adiciona um app Android com o pacote `com.fabricio.gerenciadorlivros`
+   - baixa o `google-services.json` e coloca dentro da pasta `app/`
+   - no console, ativa o Firestore Database (modo de teste)
+   - já deixei meu `google-services.json` no repositório pra facilitar, mas caso não
+     funcione é só gerar o seu
+4. Sincroniza o projeto de novo e roda num emulador ou celular.
 
-4. **Ative o Firestore**
-   - No console do Firebase, vá em "Firestore Database" > "Criar banco de dados".
-   - Escolha o modo de teste (test mode) para simplificar as regras durante o desenvolvimento.
+## Estrutura
 
-5. **Sincronize novamente**
-   - Volte ao Android Studio e clique em "Sync Project with Gradle Files" (ícone do elefante
-     com a setinha, ou `File > Sync Project with Gradle Files`).
+- `Livro.java` - classe do livro (os campos que ele tem).
+- `LivroAdapter.java` - adapter que monta a lista de livros na tela.
+- `MainActivity.java` - onde está tudo: formulário, lista, filtros, busca e o CRUD
+  com o Firestore.
+- `res/layout/activity_main.xml` - tela principal (formulário + lista).
+- `res/layout/item_livro.xml` - como cada livro aparece na lista.
+- `res/values/arrays.xml` - as opções dos spinners de gênero e status.
 
-6. **Rode no emulador**
-   - Selecione o emulador já configurado (pasta `D:\Android\avd`) no seletor de dispositivos.
-   - Clique em "Run" (▶) para instalar e executar o app.
+## Extras que escolhi fazer
 
-## Estrutura do projeto
+- Filtro de favoritos
+- Busca por título
 
-- `Livro.java` — modelo de dados do livro.
-- `LivroAdapter.java` — adapter do RecyclerView que exibe a lista de livros.
-- `MainActivity.java` — tela única com formulário de cadastro/edição, lista, filtros,
-  busca e integração com o Firestore (CRUD completo).
-- `res/layout/activity_main.xml` — layout do formulário, filtros e lista.
-- `res/layout/item_livro.xml` — layout de cada item da lista.
-- `res/values/arrays.xml` — opções dos Spinners (gênero e status de leitura).
-
-## Funcionalidades implementadas
-
-- Cadastro de livro (título, autor, gênero, ano, status de leitura, favorito).
-- Listagem dos livros com título, autor, gênero, ano e status.
-- Filtro por gênero (Spinner).
-- Clique curto no item: carrega os dados para edição.
-- Clique longo no item: pede confirmação e exclui.
-- Validações de campos obrigatórios com mensagens ao usuário.
-- Extras escolhidos:
-  - Filtro para mostrar apenas livros favoritos.
-  - Busca por título.
-  - (bônus) Diálogo de confirmação antes de excluir.
-  - (bônus) Exibição da quantidade total de livros cadastrados.
-
-## Observação sobre o `google-services.json`
-
-Esse arquivo está no `.gitignore` por conter configurações específicas do projeto Firebase.
-Se for necessário entregar o repositório com ele incluso para o professor rodar sem precisar
-criar o próprio projeto Firebase, remova a linha `google-services.json` do `.gitignore` antes
-de comitar.
+Além desses dois, também fiz o diálogo de confirmação antes de excluir e o contador do
+total de livros, que ajudam bastante na apresentação.
